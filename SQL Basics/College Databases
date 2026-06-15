@@ -1,80 +1,183 @@
-# SQL Day 1
+# SQL Day 1 - Basics
 
-## CREATE DATABASE
+## 1. Create Database
 
+```sql
 CREATE DATABASE college;
+```
 
 Purpose:
-Creates a new database.
+Creates a new database named `college`.
 
 ---
 
-## USE DATABASE
+## 2. Show Databases
 
+```sql
+SHOW DATABASES;
+```
+
+Purpose:
+Displays all available databases.
+
+---
+
+## 3. Select Database
+
+```sql
 USE college;
+```
 
 Purpose:
-Selects the database.
+Selects the `college` database for performing operations.
 
 ---
 
-## CREATE TABLE
+## 4. Create Table
 
+```sql
 CREATE TABLE Student(
     ID INT,
     Name VARCHAR(50),
     Marks INT
 );
+```
 
 Purpose:
-Creates Student table.
+Creates a table named `Student`.
 
 ---
 
-## INSERT INTO
+## 5. Insert Data
 
+```sql
 INSERT INTO Student VALUES
-(1,'Nikitha',95);
+(1,'Nikitha',95),
+(2,'Rahul',88),
+(3,'Tanya',91);
+```
 
 Purpose:
-Adds data to table.
+Inserts records into the Student table.
 
 ---
 
-## SELECT
+## 6. Display All Data
 
+```sql
 SELECT * FROM Student;
+```
 
 Purpose:
-Displays all columns.
+Displays all rows and columns from the table.
 
 ---
 
-## WHERE
+## 7. Display Specific Column
 
+```sql
+SELECT Name FROM Student;
+```
+
+Purpose:
+Displays only the Name column.
+
+---
+
+## 8. WHERE Clause
+
+```sql
 SELECT * FROM Student
 WHERE ID = 1;
+```
 
 Purpose:
-Filters rows.
+Filters rows based on a condition.
+
+Example Output:
+
+```
+Nikitha
+```
 
 ---
 
-## UPDATE
+## 9. UPDATE Data
 
+```sql
 UPDATE Student
 SET Marks = 100
 WHERE Name = 'Tanya';
+```
 
 Purpose:
-Modifies existing data.
+Modifies existing data in the table.
 
 ---
 
-## DELETE
+## 10. DELETE Data
 
+```sql
 DELETE FROM Student
 WHERE Name = 'Rahul';
+```
 
 Purpose:
-Removes data.
+Removes unwanted data from the table.
+
+---
+
+## 11. ORDER BY
+
+Ascending Order:
+
+```sql
+SELECT * FROM Student
+ORDER BY Marks;
+```
+
+Descending Order:
+
+```sql
+SELECT * FROM Student
+ORDER BY Marks DESC;
+```
+
+Purpose:
+Sorts data in ascending or descending order.
+
+---
+
+## 12. COUNT()
+
+```sql
+SELECT COUNT(*) FROM Student;
+```
+
+Purpose:
+Counts the total number of rows.
+
+---
+
+## 13. MAX()
+
+```sql
+SELECT MAX(Marks) FROM Student;
+```
+
+Purpose:
+Returns the highest value.
+
+---
+
+## 14. MIN()
+
+```sql
+SELECT MIN(Marks) FROM Student;
+```
+
+Purpose:
+Returns the lowest value.
+
+---
+
