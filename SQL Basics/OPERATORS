@@ -1,0 +1,24 @@
+-- AND
+
+SELECT * FROM Student
+WHERE Name = 'Tanya'
+AND Marks = 100;
+
+-- OR
+
+SELECT * FROM Student
+WHERE Name = 'Nikitha'
+OR Name = 'Tanya';
+
+-- LIKE
+
+SELECT * FROM Student
+WHERE Name LIKE 'N%';
+
+-- SUM
+
+SELECT SUM(Marks) FROM Student;
+
+-- AVG
+
+SELECT AVG(Marks) FROM Student;
