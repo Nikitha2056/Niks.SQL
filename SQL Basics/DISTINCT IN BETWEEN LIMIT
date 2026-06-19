@@ -2,6 +2,18 @@
 
 SELECT DISTINCT Marks
 FROM Student;
+mysql> SELECT DISTINCT Marks FROM Student;
++-------+
+| Marks |
++-------+
+|    95 |
+|   100 |
+|    98 |
+|    91 |
+|    89 |
+|    85 |
++-------+
+
 
 -- IN
 
@@ -9,14 +21,46 @@ SELECT *
 FROM Student
 WHERE Name IN ('Nikitha','Tanya');
 
+mysql> SELECT * FROM Student
+    -> WHERE Name IN ('Nikitha','Tanya');
++------+---------+-------+
+| ID   | Name    | Marks |
++------+---------+-------+
+|    1 | Nikitha |    95 |
+|    3 | Tanya   |   100 |
+|    1 | Nikitha |    95 |
++------+---------+-------+
+
 -- BETWEEN
 
 SELECT *
 FROM Student
 WHERE Marks BETWEEN 90 AND 100;
+mysql>  SELECT * FROM Student
+    -> WHERE Marks BETWEEN 90 AND 100;
++------+---------+-------+
+| ID   | Name    | Marks |
++------+---------+-------+
+|    1 | Nikitha |    95 |
+|    3 | Tanya   |   100 |
+|    1 | Nikitha |    95 |
+|    2 | Ates    |    98 |
+|    3 | Mercan  |    91 |
++------+---------+-------+
+
 
 -- LIMIT
 
 SELECT *
 FROM Student
 LIMIT 3;
+mysql> SELECT * FROM Student
+    -> LIMIT 3;
++------+---------+-------+
+| ID   | Name    | Marks |
++------+---------+-------+
+|    1 | Nikitha |    95 |
+|    3 | Tanya   |   100 |
+|    1 | Nikitha |    95 |
++------+---------+-------+
+
