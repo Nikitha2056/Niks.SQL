@@ -1,0 +1,22 @@
+-- DISTINCT
+
+SELECT DISTINCT Marks
+FROM Student;
+
+-- IN
+
+SELECT *
+FROM Student
+WHERE Name IN ('Nikitha','Tanya');
+
+-- BETWEEN
+
+SELECT *
+FROM Student
+WHERE Marks BETWEEN 90 AND 100;
+
+-- LIMIT
+
+SELECT *
+FROM Student
+LIMIT 3;
