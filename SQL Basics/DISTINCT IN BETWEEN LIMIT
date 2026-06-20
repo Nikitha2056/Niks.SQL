@@ -64,3 +64,71 @@ mysql> SELECT * FROM Student
 |    1 | Nikitha |    95 |
 +------+---------+-------+
 
+
+
+-- ORDER BY ASC
+
+SELECT * FROM Student
+ORDER BY Marks;
+
+mysql> SELECT * FROM Student
+    -> ORDER BY Marks;
++------+---------+-------+
+| ID   | Name    | Marks |
++------+---------+-------+
+|    5 | Demet   |    85 |
+|    4 | Cemal   |    89 |
+|    3 | Mercan  |    91 |
+|    1 | Nikitha |    95 |
+|    1 | Nikitha |    95 |
+|    2 | Ates    |    98 |
+|    3 | Tanya   |   100 |
++------+---------+-------+
+
+
+-- ORDER BY DESC
+
+SELECT * FROM Student
+ORDER BY Marks DESC;
+
+mysql> SELECT * FROM Student
+    -> ORDER BY Marks DESC;
++------+---------+-------+
+| ID   | Name    | Marks |
++------+---------+-------+
+|    3 | Tanya   |   100 |
+|    2 | Ates    |    98 |
+|    1 | Nikitha |    95 |
+|    1 | Nikitha |    95 |
+|    3 | Mercan  |    91 |
+|    4 | Cemal   |    89 |
+|    5 | Demet   |    85 |
++------+---------+-------+
+
+-- Top Scorer
+
+SELECT * FROM Student
+ORDER BY Marks DESC
+LIMIT 1;
+
+-----+
+| ID   | Name  | Marks |
++------+-------+-------+
+|    3 | Tanya |   100 |
++------+-------+-------+
+
+
+-- Lowest Scorer
+
+SELECT * FROM Student
+ORDER BY Marks
+LIMIT 1;
+
+mysql> SELECT * FROM Student
+    -> ORDER BY Marks
+    -> LIMIT 1;
++------+-------+-------+
+| ID   | Name  | Marks |
++------+-------+-------+
+|    5 | Demet |    85 |
++------+-------+-------+
