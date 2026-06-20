@@ -1,0 +1,56 @@
+-- GROUP BY + COUNT
+
+SELECT Name, COUNT(*)
+FROM Student
+GROUP BY Name;
+
+mysql> SELECT Name, COUNT(*)
+    -> FROM Student
+    -> GROUP BY Name;
++---------+----------+
+| Name    | COUNT(*) |
++---------+----------+
+| Nikitha |        2 |
+| Tanya   |        1 |
+| Ates    |        1 |
+| Mercan  |        1 |
+| Cemal   |        1 |
+| Demet   |        1 |
++---------+----------+
+
+-- HAVING
+
+SELECT Name, COUNT(*)
+FROM Student
+GROUP BY Name
+HAVING COUNT(*) > 1;
+
+mysql> SELECT Name, COUNT(*)
+    -> FROM Student
+    -> GROUP BY Name
+    -> HAVING COUNT(*) > 1;
++---------+----------+
+| Name    | COUNT(*) |
++---------+----------+
+| Nikitha |        2 |
++---------+----------+
+
+-- GROUP BY + AVG
+
+SELECT Name, AVG(Marks)
+FROM Student
+GROUP BY Name;
+
+mysql> SELECT Name, AVG(Marks)
+    -> FROM Student
+    -> GROUP BY Name;
++---------+------------+
+| Name    | AVG(Marks) |
++---------+------------+
+| Nikitha |    95.0000 |
+| Tanya   |   100.0000 |
+| Ates    |    98.0000 |
+| Mercan  |    91.0000 |
+| Cemal   |    89.0000 |
+| Demet   |    85.0000 |
++---------+------------+
