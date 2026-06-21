@@ -1,0 +1,77 @@
+-- INNER JOIN
+
+SELECT Student.Name, Marks.Marks
+FROM Student
+INNER JOIN Marks
+ON Student.ID = Marks.ID;
+
+mysql>  SELECT Student.name, Marks.Marks
+    -> FROM Student
+    -> INNER JOIN Marks
+    -> ON Student.ID = Marks.ID;
++---------+-------+
+| name    | Marks |
++---------+-------+
+| Nikitha |    95 |
+| Tanya   |    98 |
+| Nikitha |    95 |
+| Ates    |   100 |
+| Mercan  |    98 |
++---------+-------+
+
+
+-- Department Table
+
+CREATE TABLE Department(
+    DeptID INT PRIMARY KEY,
+    DeptName VARCHAR(20)
+);
+
+INSERT INTO Department VALUES
+(1,'CSE'),
+(2,'ECE'),
+(3,'EEE');
+
+SELECT * FROM Department;
+
++--------+----------+
+| DeptID | DeptName |
++--------+----------+
+|      1 | CSE      |
+|      2 | ECE      |
+|      3 | EEE      |
++--------+----------+
+
+
+-- StudentDept Table with Foreign Key
+
+CREATE TABLE StudentDept(
+    ID INT,
+    Name VARCHAR(20),
+    DeptID INT,
+    FOREIGN KEY (DeptID)
+    REFERENCES Department(DeptID)
+);
+
+INSERT INTO StudentDept VALUES
+(2,'Tanya',2);
+
+SELECT * FROM StudentDept;
+
+mysql> SELECT * FROM StudentDept;
++------+-------+--------+
+| ID   | Name  | DeptID |
++------+-------+--------+
+|    2 | Tanya |      2 |
++------+-------+--------+
+
+
+-- Invalid Foreign Key Example
+
+INSERT INTO StudentDept VALUES
+(2,'Tanya',5);
+
+mysql> INSERT INTO StudentDept VALUES
+    -> (2,'Tanya',5);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`college`.`studentdept`, CONSTRAINT `studentdept_ibfk_1` FOREIGN KEY (`DeptID`) REFERENCES `department` (`DeptID`))
+mysql>
