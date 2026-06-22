@@ -75,3 +75,52 @@ mysql> INSERT INTO StudentDept VALUES
     -> (2,'Tanya',5);
 ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`college`.`studentdept`, CONSTRAINT `studentdept_ibfk_1` FOREIGN KEY (`DeptID`) REFERENCES `department` (`DeptID`))
 mysql>
+
+
+
+-- =====================================
+-- SQL DAY 12
+-- Topics:
+-- LEFT JOIN
+-- RIGHT JOIN
+-- UNION
+-- UNION ALL
+-- =====================================
+
+
+-- LEFT JOIN
+
+SELECT *
+FROM Student
+LEFT JOIN Marks
+ON Student.ID = Marks.ID;
+
+
+-- RIGHT JOIN
+
+SELECT *
+FROM Student
+RIGHT JOIN Marks
+ON Student.ID = Marks.ID;
+
+
+-- UNION
+
+SELECT ID
+FROM TableA
+
+UNION
+
+SELECT ID
+FROM TableB;
+
+
+-- UNION ALL
+
+SELECT ID
+FROM TableA
+
+UNION ALL
+
+SELECT ID
+FROM TableB;
