@@ -1,0 +1,220 @@
+# SQL Day 16 - LIKE, BETWEEN, ALIAS
+
+## LIKE Operator
+
+Used to search patterns in text.
+
+### Syntax
+
+```sql
+SELECT *
+FROM Student
+WHERE Name LIKE 'N%';
+```
+
+Starts with **N**
+
+Output
+
+```text
+Nikitha
+```
+
+---
+
+### Names ending with 'a'
+
+```sql
+SELECT *
+FROM Student
+WHERE Name LIKE '%a';
+```
+
+Output
+
+```text
+Nikitha
+Tanya
+```
+
+---
+
+### Names containing 'e'
+
+```sql
+SELECT *
+FROM Student
+WHERE Name LIKE '%e%';
+```
+
+Output
+
+```text
+Ates
+Mercan
+Cemal
+Demet
+```
+
+---
+
+### LIKE Symbols
+
+```text
+% = Any number of characters
+
+'N%'   → Starts with N
+
+'%a'   → Ends with a
+
+'%e%'  → Contains e
+```
+
+---
+
+## BETWEEN Operator
+
+Used to select values within a range.
+
+### Syntax
+
+```sql
+SELECT *
+FROM Student
+WHERE Marks BETWEEN 90 AND 100;
+```
+
+Equivalent to
+
+```sql
+Marks >= 90
+AND
+Marks <= 100
+```
+
+Output
+
+```text
+Nikitha 95
+Ates 98
+Tanya 100
+Mercan 91
+Nikitha 95
+```
+
+---
+
+### Example
+
+```sql
+SELECT *
+FROM Student
+WHERE Marks BETWEEN 85 AND 90;
+```
+
+Output
+
+```text
+Cemal 89
+Demet 85
+```
+
+---
+
+## ALIAS (AS)
+
+Alias means a temporary name.
+
+### Syntax
+
+```sql
+SELECT Name AS Student_Name
+FROM Student;
+```
+
+Output
+
+```text
+Student_Name
+------------
+Nikitha
+Ates
+Tanya
+```
+
+---
+
+### Example
+
+```sql
+SELECT AVG(Marks) AS AverageMarks
+FROM Student;
+```
+
+Output
+
+```text
+AverageMarks
+------------
+93.29
+```
+
+---
+
+### COUNT() with Alias
+
+```sql
+SELECT COUNT(*) AS TotalStudents
+FROM Student;
+```
+
+Output
+
+```text
+TotalStudents
+-------------
+7
+```
+
+---
+
+## Shortcut Notes
+
+LIKE
+→ Pattern Matching
+
+BETWEEN
+→ Range Selection
+
+AS
+→ Temporary Column Name
+
+---
+
+Examples
+
+```sql
+SELECT * FROM Student
+WHERE Name LIKE 'T%';
+
+SELECT * FROM Student
+WHERE Marks BETWEEN 85 AND 90;
+
+SELECT AVG(Marks) AS AverageMarks
+FROM Student;
+
+SELECT COUNT(*) AS TotalStudents
+FROM Student;
+```
+
+---
+
+Topics Covered
+
+✅ LIKE
+
+✅ BETWEEN
+
+✅ ALIAS
+
+SQL Day 16 Completed
