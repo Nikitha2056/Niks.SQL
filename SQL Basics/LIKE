@@ -1,0 +1,634 @@
+# 🚀 SQL Day 26 – LIKE Operator & Wildcards
+
+> 📌 Difficulty: Easy → Medium
+>
+> 🎯 Category: SQL
+>
+> ⭐ Interview Importance: ⭐⭐⭐⭐⭐
+>
+> ⏳ Revision Time: 20 Minutes
+>
+> 🔥 XP: 300
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 📖 Introduction
+
+The **LIKE** operator is used to search for a specific **pattern** in text data.
+
+It is mostly used with:
+
+- VARCHAR
+- CHAR
+- TEXT
+
+Unlike `=`, the `LIKE` operator allows partial matching.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 📘 LIKE Operator
+
+## Syntax
+
+```sql
+SELECT column_name
+FROM table_name
+WHERE column_name LIKE 'pattern';
+```
+
+Example
+
+```sql
+SELECT *
+FROM Employee
+WHERE EmployeeName LIKE 'S%';
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 🌍 Real-Life Example
+
+Employee Names
+
+```text
+Ferit
+
+Seyran
+
+Suna
+
+Emir
+
+Rehyan
+```
+
+If you want all employees whose names start with **S**,
+
+Use
+
+```sql
+SELECT *
+FROM Employee
+WHERE EmployeeName LIKE 'S%';
+```
+
+Output
+
+```text
+Seyran
+
+Suna
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 📘 Wildcard (%)
+
+The `%` wildcard represents:
+
+```text
+Zero or More Characters
+```
+
+It can match:
+
+- No character
+- One character
+- Many characters
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## Example 1
+
+Names starting with **F**
+
+```sql
+SELECT *
+FROM Employee
+WHERE EmployeeName LIKE 'F%';
+```
+
+Output
+
+```text
+Ferit
+```
+
+━━━━━━━━━━━━━━
+
+## Example 2
+
+Names ending with **n**
+
+```sql
+SELECT *
+FROM Employee
+WHERE EmployeeName LIKE '%n';
+```
+
+Output
+
+```text
+Seyran
+
+Rehyan
+```
+
+━━━━━━━━━━━━━━
+
+## Example 3
+
+Names containing **ya**
+
+```sql
+SELECT *
+FROM Employee
+WHERE EmployeeName LIKE '%ya%';
+```
+
+Output
+
+```text
+Rehyan
+```
+
+━━━━━━━━━━━━━━
+
+## Example 4
+
+Names starting with **S** and ending with **a**
+
+```sql
+SELECT *
+FROM Employee
+WHERE EmployeeName LIKE 'S%a';
+```
+
+Output
+
+```text
+Suna
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 📘 Wildcard (_)
+
+The `_` wildcard represents:
+
+```text
+Exactly One Character
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## Example 1
+
+Names having exactly **4 letters**
+
+```sql
+SELECT *
+FROM Employee
+WHERE EmployeeName LIKE '____';
+```
+
+Output
+
+```text
+Suna
+
+Emir
+```
+
+━━━━━━━━━━━━━━
+
+## Example 2
+
+Names starting with **S** and having exactly **4 letters**
+
+```sql
+SELECT *
+FROM Employee
+WHERE EmployeeName LIKE 'S___';
+```
+
+Output
+
+```text
+Suna
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 🧠 Difference Between % and _
+
+| Wildcard | Meaning | Example |
+|----------|---------|---------|
+| `%` | Zero or More Characters | `'S%'` |
+| `_` | Exactly One Character | `'S___'` |
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 💻 Practice Queries
+
+## Starts With
+
+```sql
+SELECT *
+FROM Employee
+WHERE EmployeeName LIKE 'F%';
+```
+
+━━━━━━━━━━━━━━
+
+## Ends With
+
+```sql
+SELECT *
+FROM Employee
+WHERE EmployeeName LIKE '%n';
+```
+
+━━━━━━━━━━━━━━
+
+## Contains
+
+```sql
+SELECT *
+FROM Employee
+WHERE EmployeeName LIKE '%ya%';
+```
+
+━━━━━━━━━━━━━━
+
+## Exactly 4 Characters
+
+```sql
+SELECT *
+FROM Employee
+WHERE EmployeeName LIKE '____';
+```
+
+━━━━━━━━━━━━━━
+
+## Starts With S & Ends With a
+
+```sql
+SELECT *
+FROM Employee
+WHERE EmployeeName LIKE 'S%a';
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 🔍 Dry Run
+
+Query
+
+```sql
+SELECT *
+FROM Employee
+WHERE EmployeeName LIKE 'S%a';
+```
+
+Execution
+
+```text
+Employee Table
+
+↓
+
+Check every EmployeeName
+
+↓
+
+Starts with S ?
+
+↓
+
+Ends with a ?
+
+↓
+
+YES
+
+↓
+
+Display Record
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 🧠 Memory Tricks
+
+## Wildcard %
+
+```text
+%
+
+↓
+
+Many Characters
+```
+
+Examples
+
+```text
+S%
+
+↓
+
+S
+
+Sam
+
+Suna
+
+Seyran
+
+Sunita
+```
+
+━━━━━━━━━━━━━━
+
+## Wildcard _
+
+```text
+_
+
+↓
+
+One Character
+```
+
+Example
+
+```text
+S___
+
+↓
+
+Suna ✅
+
+Sam ❌
+
+Seyran ❌
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# ❌ Common Mistakes
+
+## Mistake 1
+
+Using `=` instead of `LIKE`
+
+❌ Wrong
+
+```sql
+SELECT *
+FROM Employee
+WHERE EmployeeName = 'S%';
+```
+
+✅ Correct
+
+```sql
+SELECT *
+FROM Employee
+WHERE EmployeeName LIKE 'S%';
+```
+
+━━━━━━━━━━━━━━
+
+## Mistake 2
+
+Confusing `%` with `_`
+
+❌ Wrong
+
+```sql
+LIKE '____%'
+```
+
+when you want exactly four letters.
+
+✅ Correct
+
+```sql
+LIKE '____'
+```
+
+━━━━━━━━━━━━━━
+
+## Mistake 3
+
+Using multiple `%`
+
+```sql
+LIKE 'S%%a'
+```
+
+It works, but it is unnecessary.
+
+Preferred
+
+```sql
+LIKE 'S%a'
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 🎯 Interview Questions
+
+## Q1
+
+What is the purpose of the LIKE operator?
+
+**Answer**
+
+It is used to search for a specific pattern in text data.
+
+━━━━━━━━━━━━━━
+
+## Q2
+
+What does `%` represent?
+
+**Answer**
+
+Zero or more characters.
+
+━━━━━━━━━━━━━━
+
+## Q3
+
+What does `_` represent?
+
+**Answer**
+
+Exactly one character.
+
+━━━━━━━━━━━━━━
+
+## Q4
+
+Difference between `%` and `_`?
+
+| `%` | `_` |
+|------|-----|
+| Zero or More Characters | Exactly One Character |
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 📚 Quick Revision
+
+```text
+LIKE
+
+↓
+
+Pattern Matching
+
+━━━━━━━━━━━━━━
+
+%
+
+↓
+
+Zero or More Characters
+
+━━━━━━━━━━━━━━
+
+_
+
+↓
+
+Exactly One Character
+
+━━━━━━━━━━━━━━
+
+'S%'
+
+↓
+
+Starts With S
+
+━━━━━━━━━━━━━━
+
+'%n'
+
+↓
+
+Ends With n
+
+━━━━━━━━━━━━━━
+
+'%ya%'
+
+↓
+
+Contains ya
+
+━━━━━━━━━━━━━━
+
+'S%a'
+
+↓
+
+Starts With S
+
+Ends With a
+
+━━━━━━━━━━━━━━
+
+'____'
+
+↓
+
+Exactly Four Letters
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 🏆 Day 26 Summary
+
+```text
+✅ LIKE Operator
+
+✅ Pattern Matching
+
+✅ % Wildcard
+
+✅ _ Wildcard
+
+✅ Starts With
+
+✅ Ends With
+
+✅ Contains
+
+✅ Exact Length Search
+
+✅ Dry Run
+
+✅ Common Mistakes
+
+✅ Interview Questions
+
+✅ Quick Revision
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 📈 Confidence Meter
+
+⭐⭐⭐⭐⭐
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 🎯 Frequently Asked In
+
+✅ TCS
+
+✅ Infosys
+
+✅ Accenture
+
+✅ Cognizant
+
+✅ Capgemini
+
+✅ Wipro
+
+✅ Deloitte
+
+✅ Tech Mahindra
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 🏆 SQL Progress Tracker
+
+```text
+✅ CREATE DATABASE
+✅ CREATE TABLE
+✅ INSERT
+✅ SELECT
+✅ DISTINCT
+✅ WHERE
+✅ ORDER BY
+✅ BETWEEN
+✅ IN
+✅ NOT IN
+✅ GROUP BY
+✅ HAVING
+✅ Aggregate Functions
+✅ AS (Aliases)
+✅ LIKE
+✅ Wildcards (% , _)
+
+🎯 Next:
+➡ JOINS
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
