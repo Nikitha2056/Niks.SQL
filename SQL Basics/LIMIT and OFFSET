@@ -1,0 +1,815 @@
+# 🚀 SQL Day 27 – ORDER BY, Multiple Column Sorting & LIMIT
+
+> 📌 Difficulty: Easy → Medium
+>
+> 🎯 Category: SQL
+>
+> ⭐ Interview Importance: ⭐⭐⭐⭐⭐
+>
+> ⏳ Revision Time: 20 Minutes
+>
+> 🔥 XP: 300
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 📖 Introduction
+
+SQL provides clauses to:
+
+- Sort data
+- Display only required rows
+
+Today we learned:
+
+```text
+✅ ORDER BY
+
+✅ Multiple Column ORDER BY
+
+✅ LIMIT
+
+✅ OFFSET
+```
+
+These are very common in placement interviews.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 📘 ORDER BY
+
+The **ORDER BY** clause is used to sort records.
+
+## Syntax
+
+```sql
+SELECT *
+FROM Employee
+ORDER BY ColumnName;
+```
+
+Default sorting order:
+
+```text
+Ascending (ASC)
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 📘 ASC (Ascending)
+
+Sorts data from:
+
+```text
+Small → Large
+
+A → Z
+```
+
+Example
+
+```sql
+SELECT *
+FROM Employee
+ORDER BY Salary ASC;
+```
+
+Output
+
+```text
+100000
+
+400000
+
+400000
+
+600000
+
+3500000
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 📘 DESC (Descending)
+
+Sorts data from:
+
+```text
+Large → Small
+
+Z → A
+```
+
+Example
+
+```sql
+SELECT *
+FROM Employee
+ORDER BY Salary DESC;
+```
+
+Output
+
+```text
+3500000
+
+600000
+
+400000
+
+400000
+
+100000
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 📘 ORDER BY Employee Name
+
+Example
+
+```sql
+SELECT *
+FROM Employee
+ORDER BY EmployeeName ASC;
+```
+
+Output
+
+```text
+Emir
+
+Ferit
+
+Rehyan
+
+Seyran
+
+Suna
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 📘 ORDER BY Department
+
+Example
+
+```sql
+SELECT *
+FROM Employee
+ORDER BY Department ASC;
+```
+
+Output
+
+```text
+HR
+
+IT
+
+Sales
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 📘 Multiple Column ORDER BY
+
+Sometimes one column contains duplicate values.
+
+Example
+
+```text
+Seyran = 400000
+
+Rehyan = 400000
+```
+
+We can sort using more than one column.
+
+## Syntax
+
+```sql
+SELECT *
+FROM Employee
+ORDER BY Department ASC, Salary DESC;
+```
+
+Meaning
+
+```text
+First
+
+↓
+
+Department
+
+↓
+
+If Departments are same
+
+↓
+
+Sort Salary in Descending Order
+```
+
+Output
+
+```text
+HR
+
+Suna
+
+600000
+
+↓
+
+Rehyan
+
+400000
+
+━━━━━━━━━━━━━━
+
+IT
+
+Ferit
+
+3500000
+
+↓
+
+Seyran
+
+400000
+
+━━━━━━━━━━━━━━
+
+Sales
+
+Emir
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 📘 LIMIT
+
+The **LIMIT** clause restricts the number of rows returned.
+
+## Syntax
+
+```sql
+SELECT *
+FROM Employee
+LIMIT 3;
+```
+
+Output
+
+```text
+First 3 Rows
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 📘 Top 3 Highest Paid Employees
+
+```sql
+SELECT *
+FROM Employee
+ORDER BY Salary DESC
+LIMIT 3;
+```
+
+Output
+
+```text
+Ferit
+
+Suna
+
+Seyran
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 📘 Highest Paid Employee
+
+```sql
+SELECT *
+FROM Employee
+ORDER BY Salary DESC
+LIMIT 1;
+```
+
+Output
+
+```text
+Ferit
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 📘 OFFSET
+
+OFFSET skips rows before displaying results.
+
+## Syntax
+
+```sql
+SELECT *
+FROM Employee
+ORDER BY Salary DESC
+LIMIT 1 OFFSET 1;
+```
+
+Meaning
+
+```text
+Skip First Row
+
+↓
+
+Display Next Row
+```
+
+Output
+
+```text
+Suna
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 📘 Second Highest Salary
+
+```sql
+SELECT *
+FROM Employee
+ORDER BY Salary DESC
+LIMIT 1 OFFSET 1;
+```
+
+Output
+
+```text
+600000
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 📘 Third Highest Salary
+
+```sql
+SELECT *
+FROM Employee
+ORDER BY Salary DESC
+LIMIT 1 OFFSET 2;
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 🧠 Memory Tricks
+
+## ORDER BY
+
+```text
+ORDER BY
+
+↓
+
+Sort Records
+```
+
+━━━━━━━━━━━━━━
+
+## ASC
+
+```text
+Ascending
+
+↓
+
+A → Z
+
+↓
+
+Small → Large
+```
+
+━━━━━━━━━━━━━━
+
+## DESC
+
+```text
+Descending
+
+↓
+
+Z → A
+
+↓
+
+Large → Small
+```
+
+━━━━━━━━━━━━━━
+
+## LIMIT
+
+```text
+LIMIT
+
+↓
+
+How Many Rows?
+```
+
+━━━━━━━━━━━━━━
+
+## OFFSET
+
+```text
+OFFSET
+
+↓
+
+Skip Rows
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 🔍 Dry Run
+
+Query
+
+```sql
+SELECT *
+FROM Employee
+ORDER BY Salary DESC
+LIMIT 3;
+```
+
+Execution
+
+```text
+Employee Table
+
+↓
+
+Sort Salary Descending
+
+↓
+
+3500000
+
+600000
+
+400000
+
+400000
+
+100000
+
+↓
+
+Take First 3 Rows
+
+↓
+
+Display Result
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 💻 Practice Queries
+
+## Employee Name
+
+```sql
+SELECT *
+FROM Employee
+ORDER BY EmployeeName ASC;
+```
+
+━━━━━━━━━━━━━━
+
+## Department
+
+```sql
+SELECT *
+FROM Employee
+ORDER BY Department ASC;
+```
+
+━━━━━━━━━━━━━━
+
+## Department + Salary
+
+```sql
+SELECT *
+FROM Employee
+ORDER BY Department ASC,
+Salary DESC;
+```
+
+━━━━━━━━━━━━━━
+
+## Top 3 Salaries
+
+```sql
+SELECT *
+FROM Employee
+ORDER BY Salary DESC
+LIMIT 3;
+```
+
+━━━━━━━━━━━━━━
+
+## Second Highest Salary
+
+```sql
+SELECT *
+FROM Employee
+ORDER BY Salary DESC
+LIMIT 1 OFFSET 1;
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# ❌ Common Mistakes
+
+## Mistake 1
+
+Forgetting DESC.
+
+❌ Wrong
+
+```sql
+ORDER BY Salary;
+```
+
+When you want the highest salary.
+
+✅ Correct
+
+```sql
+ORDER BY Salary DESC;
+```
+
+━━━━━━━━━━━━━━
+
+## Mistake 2
+
+Using LIMIT before ORDER BY.
+
+❌ Wrong
+
+```sql
+LIMIT 3
+ORDER BY Salary DESC;
+```
+
+✅ Correct
+
+```sql
+ORDER BY Salary DESC
+LIMIT 3;
+```
+
+━━━━━━━━━━━━━━
+
+## Mistake 3
+
+Confusing LIMIT and OFFSET.
+
+```text
+LIMIT
+
+↓
+
+How Many Rows?
+
+━━━━━━━━━━━━━━
+
+OFFSET
+
+↓
+
+How Many Rows to Skip?
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 💡 Interview Questions
+
+## Q1
+
+What is ORDER BY?
+
+**Answer**
+
+Used to sort records.
+
+━━━━━━━━━━━━━━
+
+## Q2
+
+Difference between ASC and DESC?
+
+| ASC | DESC |
+|------|------|
+| Small → Large | Large → Small |
+| A → Z | Z → A |
+
+━━━━━━━━━━━━━━
+
+## Q3
+
+What is LIMIT?
+
+**Answer**
+
+Restricts the number of rows returned.
+
+━━━━━━━━━━━━━━
+
+## Q4
+
+What is OFFSET?
+
+**Answer**
+
+Skips a specified number of rows before displaying results.
+
+━━━━━━━━━━━━━━
+
+## Q5
+
+How do you find the highest-paid employee?
+
+```sql
+SELECT *
+FROM Employee
+ORDER BY Salary DESC
+LIMIT 1;
+```
+
+━━━━━━━━━━━━━━
+
+## Q6
+
+How do you find the second highest-paid employee?
+
+```sql
+SELECT *
+FROM Employee
+ORDER BY Salary DESC
+LIMIT 1 OFFSET 1;
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 📚 Quick Revision
+
+```text
+ORDER BY
+
+↓
+
+Sort Data
+
+━━━━━━━━━━━━━━
+
+ASC
+
+↓
+
+Small → Large
+
+━━━━━━━━━━━━━━
+
+DESC
+
+↓
+
+Large → Small
+
+━━━━━━━━━━━━━━
+
+Multiple ORDER BY
+
+↓
+
+First Column
+
+↓
+
+Second Column
+
+━━━━━━━━━━━━━━
+
+LIMIT
+
+↓
+
+Restrict Rows
+
+━━━━━━━━━━━━━━
+
+OFFSET
+
+↓
+
+Skip Rows
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 🏆 Day 27 Summary
+
+```text
+✅ ORDER BY
+
+✅ ASC
+
+✅ DESC
+
+✅ Multiple Column Sorting
+
+✅ LIMIT
+
+✅ OFFSET
+
+✅ Top N Records
+
+✅ Highest Salary
+
+✅ Second Highest Salary
+
+✅ Dry Run
+
+✅ Common Mistakes
+
+✅ Interview Questions
+
+✅ Quick Revision
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 📈 Confidence Meter
+
+⭐⭐⭐⭐⭐
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 🎯 Frequently Asked In
+
+✅ TCS
+
+✅ Infosys
+
+✅ Accenture
+
+✅ Cognizant
+
+✅ Capgemini
+
+✅ Wipro
+
+✅ Deloitte
+
+✅ Tech Mahindra
+
+✅ Amazon
+
+✅ Google
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 🏆 SQL Progress Tracker
+
+```text
+✅ CREATE DATABASE
+✅ CREATE TABLE
+✅ INSERT
+✅ SELECT
+✅ DISTINCT
+✅ WHERE
+✅ ORDER BY
+✅ Multiple ORDER BY
+✅ BETWEEN
+✅ IN
+✅ NOT IN
+✅ GROUP BY
+✅ HAVING
+✅ Aggregate Functions
+✅ AS (Aliases)
+✅ LIKE
+✅ Wildcards (% , _)
+✅ LIMIT
+✅ OFFSET
+
+🎯 Next Topic:
+➡ JOINS (Most Important SQL Topic)
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
